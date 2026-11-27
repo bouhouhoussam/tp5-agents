@@ -20,7 +20,7 @@ LLM local : Ollama (qwen3:4b, qwen3:1.7b) · Embeddings : nomic-embed-text
 
 ### C. MCP
 - [x] Étape 10 : Serveur MCP (2 tools) + Inspector
-- [ ] Étape 11 : Agent LangChain client MCP (streamable-http)
+- [x] Étape 11 : Agent LangChain client MCP (streamable-http)
 - [ ] Étape 12 : Agent n8n client MCP
 
 ### D. Synthèse
@@ -52,3 +52,6 @@ Lancement :
     npx @modelcontextprotocol/inspector
 
 ![Inspector](docs/inspector.png)
+## Étape 11 : agent LangChain client MCP
+
+Agent `create_agent` qui découvre ses outils (`get_employee_infos`, `web_search`) via `MultiServerMCPClient` en `streamable_http` sur `http://localhost:23000/mcp`. Les outils MCP étant asynchrones, l'agent est appelé avec `ainvoke`.
