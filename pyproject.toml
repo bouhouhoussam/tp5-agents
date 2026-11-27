@@ -18,6 +18,7 @@ dependencies = [
     "langchain-tavily>=0.2.18",
     "langchain-text-splitters>=1.2.0",
     "langgraph>=1.2.24",
+    "langgraph-cli[inmem]>=0.4.44",
     "pypdf>=7.2.0",
     "python-dotenv>=1.2.4",
 ]
