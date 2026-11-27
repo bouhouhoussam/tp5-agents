@@ -19,7 +19,7 @@ LLM local : Ollama (qwen3:4b, qwen3:1.7b) · Embeddings : nomic-embed-text
 - [x] Étape 9 : Interface Streamlit
 
 ### C. MCP
-- [ ] Étape 10 : Serveur MCP (2 tools) + Inspector
+- [x] Étape 10 : Serveur MCP (2 tools) + Inspector
 - [ ] Étape 11 : Agent LangChain client MCP (streamable-http)
 - [ ] Étape 12 : Agent n8n client MCP
 
@@ -42,3 +42,13 @@ LLM local : Ollama (qwen3:4b, qwen3:1.7b) · Embeddings : nomic-embed-text
     uv run streamlit run src/tp5_agents/app_streamlit.py
 
 ![Streamlit](docs/streamlit.png)
+## Étape 10 : serveur MCP et test avec l'Inspector
+
+Serveur FastMCP (`src/tp5_agents/mcp_server.py`) exposé en streamable-http sur `http://localhost:23000/mcp`, avec deux outils : `get_employee_infos` et `web_search` (Tavily).
+
+Lancement :
+
+    uv run python src/tp5_agents/mcp_server.py
+    npx @modelcontextprotocol/inspector
+
+![Inspector](docs/inspector.png)
