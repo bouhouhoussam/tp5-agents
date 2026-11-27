@@ -21,6 +21,7 @@ dependencies = [
     "langgraph-cli[inmem]>=0.4.44",
     "pypdf>=7.2.0",
     "python-dotenv>=1.2.4",
+    "streamlit>=1.67.0",
 ]
 
 [project.scripts]

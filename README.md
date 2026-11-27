@@ -16,7 +16,7 @@ LLM local : Ollama (qwen3:4b, qwen3:1.7b) · Embeddings : nomic-embed-text
 - [x] Étape 6 : Bases de LangGraph
 - [x] Étape 7 : Chatbot Agentic RAG
 - [x] Étape 8 : LangGraph Studio
-- [ ] Étape 9 : Interface Streamlit
+- [x] Étape 9 : Interface Streamlit
 
 ### C. MCP
 - [ ] Étape 10 : Serveur MCP (2 tools) + Inspector
@@ -37,3 +37,8 @@ LLM local : Ollama (qwen3:4b, qwen3:1.7b) · Embeddings : nomic-embed-text
 
 ![Graphe](docs/studio_graph.png)
 ![Chat](docs/studio_chat.png)
+## Interface Streamlit
+
+    uv run streamlit run src/tp5_agents/app_streamlit.py
+
+![Streamlit](docs/streamlit.png)
