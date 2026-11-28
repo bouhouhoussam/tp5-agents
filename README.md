@@ -25,6 +25,7 @@ LLM local : Ollama (qwen3:4b, qwen3:1.7b) · Embeddings : nomic-embed-text
 
 ### D. Synthèse
 - [ ] Étape 13 : SAV multi-agents
+- [x] 13a : agent_garantie + outil local consulter_garantie
 
 ## Installation
     uv sync
