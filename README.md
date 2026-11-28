@@ -27,6 +27,7 @@ LLM local : Ollama (qwen3:4b, qwen3:1.7b) · Embeddings : nomic-embed-text
 - [ ] Étape 13 : SAV multi-agents
 - [x] 13a : agent_garantie + outil local consulter_garantie
 - [x] 13b : orchestrateur LangGraph (routage documentation / garantie)
+- [x] 13c : RAG multimodal (texte + images du PDF dans ChromaDB)
 
 ## Installation
     uv sync
