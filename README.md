@@ -24,10 +24,12 @@ LLM local : Ollama (qwen3:4b, qwen3:1.7b) · Embeddings : nomic-embed-text
 - [x] Étape 12 : Agent n8n client MCP
 
 ### D. Synthèse
-- [ ] Étape 13 : SAV multi-agents
+- [x] Étape 13 : SAV multi-agents
 - [x] 13a : agent_garantie + outil local consulter_garantie
 - [x] 13b : orchestrateur LangGraph (routage documentation / garantie)
 - [x] 13c : RAG multimodal (texte + images du PDF dans ChromaDB)
+- [x] 13d : serveur MCP SAV (rag_multimodal) + agent_documentaire
+- [x] 13e : tests des deux exemples du sujet (documentation et garantie)
 
 ## Installation
     uv sync
@@ -65,3 +67,20 @@ Le workflow exporté est dans `docs/n8n_workflow.json`.
 
 ![Workflow n8n](docs/n8n_workflow.png)
 ![Chat n8n](docs/n8n_chat.png)
+## Étape 13 : système SAV multi-agents (partie D)
+
+Graphe LangGraph : `orchestrateur` classe la demande (documentation ou garantie), puis la route vers un seul agent spécialisé avant la fin.
+
+- `agent_documentaire` : appelle l'outil distant `rag_multimodal` publié par un serveur MCP (`src/tp5_agents/mcp_sav_server.py`, port 23001, streamable-http). Derrière l'outil : la photo du client est décrite par `qwen2.5vl:3b`, puis un agent RAG cherche dans un index ChromaDB qui contient le texte et les images du manuel PDF, et répond en citant ses sources.
+- `agent_garantie` : appelle l'outil local `consulter_garantie`, qui lit en lecture seule `sav/registre_garanties.json`.
+
+Lancement :
+
+    uv run python -m tp5_agents.sav_rag              (indexation du manuel, une fois)
+    uv run python -m tp5_agents.mcp_sav_server       (serveur MCP du SAV)
+
+puis exécuter `notebooks/sav_multiagents.ipynb`.
+
+Limite connue : le modèle de vision local (3 milliards de paramètres) peut mal décrire une photo. Le prompt de description a donc été limité au pictogramme affiché.
+
+![Tests SAV](docs/sav_tests.png)
