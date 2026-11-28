@@ -21,7 +21,7 @@ LLM local : Ollama (qwen3:4b, qwen3:1.7b) · Embeddings : nomic-embed-text
 ### C. MCP
 - [x] Étape 10 : Serveur MCP (2 tools) + Inspector
 - [x] Étape 11 : Agent LangChain client MCP (streamable-http)
-- [ ] Étape 12 : Agent n8n client MCP
+- [x] Étape 12 : Agent n8n client MCP
 
 ### D. Synthèse
 - [ ] Étape 13 : SAV multi-agents
@@ -55,3 +55,10 @@ Lancement :
 ## Étape 11 : agent LangChain client MCP
 
 Agent `create_agent` qui découvre ses outils (`get_employee_infos`, `web_search`) via `MultiServerMCPClient` en `streamable_http` sur `http://localhost:23000/mcp`. Les outils MCP étant asynchrones, l'agent est appelé avec `ainvoke`.
+## Étape 12 : agent n8n client MCP
+
+Workflow n8n (Chat Trigger, AI Agent, Ollama Chat Model `qwen3:4b`, MCP Client Tool en HTTP Streamable sur `http://127.0.0.1:23000/mcp`).
+Le workflow exporté est dans `docs/n8n_workflow.json`.
+
+![Workflow n8n](docs/n8n_workflow.png)
+![Chat n8n](docs/n8n_chat.png)
